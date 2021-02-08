@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Students List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h3><a href="/create">Insert student</a></h3>
+      <h1>Students List</h1>
+      <% if(students.length>0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <% for(var i=0; i<students.length;i++) { %>
+            <tr>
+              <td><a href="/show/<%= students[i].surname%>"><%= students[i].name%></a></td>
+              <td><%= students[i].surname%></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <div>No student found.</div>
+      <% } %>
+    </div>
+  </body>
+</html>
