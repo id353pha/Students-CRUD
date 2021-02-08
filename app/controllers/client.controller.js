@@ -1,28 +1,28 @@
 const db = require("../models");
 const Client = db.clients;
 
-// Create and Save a new Client
+// Create and Save a new student
 exports.create = (req, res) => {
   res.render("../views/pages/create.ejs");
 }; 
 
 exports.save = (req, res) => {
 
-    // check validity of client info
+    // check validity of student info
     if (!req.body.name) {
       res.render("../views/pages/create.ejs");
       console.log({ message: "Content can not be empty!" });
       return;
      }
       
-     // Create a Client
+     // Create a student
      const client = new Client({
       name: req.body.name,
       surname: req.body.surname,
       class: req.body.class
      })
 
-     //Save Client
+     //Save student
      client
         .save(client)
         .then(data => {
@@ -30,7 +30,7 @@ exports.save = (req, res) => {
         })  
 };
 
-// Retrieve all Client from the database.
+// Retrieve all students from the database.
 exports.findAll = (req, res) => {
     
     const surname = req.query.surname;
@@ -48,7 +48,7 @@ exports.findAll = (req, res) => {
       });
 };
 
-// Find a single Client by codFiscale
+// Find a single student by surname
 exports.findOne = (req, res) => {
 
   const surname = req.params.surname;
@@ -87,7 +87,7 @@ exports.edit = (req,res) =>{
 
 
 
-// Update a Client by the codFiscale in the request
+// Update a student by the surname in the request
 exports.update = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -114,7 +114,7 @@ exports.update = (req, res) => {
   
 };
 
-// Delete a Client with the specified codFiscale in the request
+// Delete a student with the specified surname in the request
 exports.delete = (req, res) => {
     const surname = req.params.surname;
 
@@ -139,7 +139,7 @@ exports.delete = (req, res) => {
   
 };
 
-// Delete all Clients from the database.
+// Delete all students from the database.
 exports.deleteAll = (req, res) => {
     Client.deleteMany({})
     .then(data => {

@@ -3,28 +3,28 @@
   
     var router = require("express").Router();
   
-    // save a new client
+    // save a new student
     router.post("/save", client.save);
 
     //create form
     router.get("/create", client.create);
   
-    // Retrieve all client
+    // Retrieve all student
     router.get("/index", client.findAll);
   
-    // Retrieve a single client with codFiscale
+    // Retrieve a single student with surname
     router.get("/show/:surname", client.findOne);
 
-    //edit a client
+    //edit a student
     router.get("/edit/:surname", client.edit);
   
-    // Update a client with codFiscale
+    // Update a student with surname
     router.post("/update/:surname", client.update);
   
-    // Delete a client with codFiscale
+    // Delete a student with surname
     router.post("/delete/:surname", client.delete);
   
-    //delete all clients
+    //delete all student
     router.delete("/", client.deleteAll);
   
     //app.use('/api/client', router);
